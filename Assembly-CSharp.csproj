@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Balls\WallSystem.cs" />
      <Compile Include="Assets\EnemySystem.cs" />
+     <Compile Include="Assets\GcSystem.cs" />
      <Compile Include="Assets\GroundSystem.cs" />
      <Compile Include="Assets\MeSystem.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />

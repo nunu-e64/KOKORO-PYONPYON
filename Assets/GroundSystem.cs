@@ -3,19 +3,29 @@ using System.Collections;
 
 public class GroundSystem : MonoBehaviour {
 	public GameObject[] wall = new GameObject[10];
+	public GameObject[] groundCube = new GameObject[2];
+	public float pushStep = 2.5f;	//seconds
+	public float fallStep = 3.0f;	//seconds
+
 	int wall_num=0;
 	float timecount = 0;
 	int counter = 0;
-	public float pushStep = 2.5f;
 
 	GameObject new_wall;
 
 	// Use this for initialization
 	void Start () {
-		
+		GcSystem new_gc;
+		GameObject go;
+
+		for (int i=0; i<11; i++) {
+			for (int j=0; j<11; j++) {
+				go = (GameObject)(Instantiate(groundCube[(i+j)%2],  new Vector3((i-5)*2,0,(j-5)*2), new Quaternion()));
+				//new_gc.SetIndex(i,j);
+			}
+		}
 	}
-	
-	
+		
 	// Update is called once per frame
 	void Update () {
 		timecount += Time.deltaTime;//seconds
