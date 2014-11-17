@@ -1,0 +1,7 @@
+test_Data/
+ProjectSettings/
+Library/
+Temp/
+*.sln
+Unity.userprefs
+se-no.userprefs
