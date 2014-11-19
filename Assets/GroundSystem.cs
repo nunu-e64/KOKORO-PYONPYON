@@ -32,7 +32,7 @@ public class GroundSystem : MonoBehaviour {
 
 		for (int i=0; i<11; i++) {
 			for (int j=0; j<11; j++) {
-				go = (GameObject)(Instantiate(groundCube[(i+j)%2],  new Vector3((i-5)*2.1f,0,(j-5)*2.1f), new Quaternion()));
+				go = (GameObject)(Instantiate(groundCube[(i+j)%2],  new Vector3((i-5)*2,0,(j-5)*2), new Quaternion()));
 				new_gc = go.GetComponents<GcSystem>()[0];
 				new_gc.SetDeadTime(deadTime[i,j]*fallStep);
 			}
