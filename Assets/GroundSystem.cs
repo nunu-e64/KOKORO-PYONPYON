@@ -46,19 +46,19 @@ public class GroundSystem : MonoBehaviour {
 			switch(counter) {
 			case (0):
 				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (0, 1, -30), new Quaternion(0,0,0,0)));
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (0, wall[wall_num].transform.localScale.y/2+0.5f, -30), new Quaternion()));
 				new_wall.transform.Rotate(0,0,0);
-				//go0.transform.position.y = go0.transform.localScale.y; 
+				//new_wall.transform.position.y = new_wall.transform.localScale.y/2 + 0.5f; 
 				break;
 			case (1):
 				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (-30, 1,0), new Quaternion(0,0,0,0)));
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (-30, wall[wall_num].transform.localScale.y/2+0.5f,0), new Quaternion()));
 				new_wall.transform.Rotate(0,90,0);
 				//go1.transform.position.y = go1.transform.localScale.y;
 				break;
 			case (2):
 				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (0, 1, 30), new Quaternion(0,0,0,0)));
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (0, wall[wall_num].transform.localScale.y/2+0.5f, 30), new Quaternion()));
 				new_wall.transform.Rotate(0,90*2,0);
 				//go2.transform.position.y = go2.transform.localScale.y;
 				break;
@@ -66,7 +66,7 @@ public class GroundSystem : MonoBehaviour {
 				timecount=0;
 				counter=0;
 				wall_num = (wall_num+1)%2;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (30, 1, 0), new Quaternion(0,0,0,0)));					
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (30, wall[wall_num].transform.localScale.y/2+0.5f, 0), new Quaternion()));					
 				new_wall.transform.Rotate(0,90*3,0);
 				//go3.transform.position.y = go3.transform.localScale.y;
 				break;

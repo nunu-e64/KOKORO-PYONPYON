@@ -28,12 +28,12 @@ public class MeSystem : MonoBehaviour {
 	}*/
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
 
 	}
 
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
 		if (Input.GetKey (keyUp)) {
 			rigidbody.AddForce(new Vector3(0,0,moveForce));
 			//this.transform.Translate(new Vector3(0,0,0.1f));
