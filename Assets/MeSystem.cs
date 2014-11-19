@@ -9,71 +9,61 @@ public class MeSystem : MonoBehaviour {
 	private bool jump=false;
 	public float accell = 0.1f;
 	public float maxSpeed = 10;
-	Text goText;
+	public float moveForce = 10;
+	//Text goText;
 
-	void Awake(){
+	/*void Awake(){
 		goText = GameObject.Find ("1/Text").GetComponent <Text> ();
 		goText.gameObject.SetActive (false);
 		goText.text ="73";
-	}
-
+	}*/
 
 	// Use this for initialization
 	void Start () {
-		goText.text ="72";
-	}
 
+	}
 
 	// Update is called once per frame
 	void Update () {
-		goText.gameObject.SetActive (true);
-
 		if (Input.GetKey (KeyCode.UpArrow)) {
-			this.transform.Translate(new Vector3(0,0,0.1f));
+			rigidbody.AddForce(new Vector3(0,0,moveForce));
+			//this.transform.Translate(new Vector3(0,0,0.1f));
 		}
 		if (Input.GetKey (KeyCode.DownArrow)) {	
-			this.transform.Translate(new Vector3(0,0,-0.1f));
+			rigidbody.AddForce(new Vector3(0,0,-moveForce));
+			//this.transform.Translate(new Vector3(0,0,-0.1f));
 		}
 		if (Input.GetKey (KeyCode.RightArrow)) {
-			this.transform.Translate(new Vector3(0.1f,0,0));
+			rigidbody.AddForce(new Vector3(moveForce,0,0));
+			//this.transform.Translate(new Vector3(0.1f,0,0));
 		}
 		if (Input.GetKey (KeyCode.LeftArrow)) {	
-			this.transform.Translate(new Vector3(-0.1f,0,0));
+			rigidbody.AddForce(new Vector3(-moveForce,0,0));
+			//this.transform.Translate(new Vector3(-0.1f,0,0));
 		}
-/*		if (Input.GetKey (KeyCode.UpArrow)) {
-			this.transform.rigidbody.velocity+=new Vector3(0,0,accell);
-		}
-		if (Input.GetKey (KeyCode.DownArrow)) {	
-			this.transform.rigidbody.velocity+=new Vector3(0,0,-accell);
-		}
-		if (Input.GetKey (KeyCode.RightArrow)) {
-			this.transform.rigidbody.velocity+=new Vector3(accell,0,0);
-		}
-		if (Input.GetKey (KeyCode.LeftArrow)) {	
-			this.transform.rigidbody.velocity+=new Vector3(-accell,0,0);
-		}
-*/
+
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			if (!jump) {
-				transform.rigidbody.velocity=new Vector3(0,10,0);
+				rigidbody.AddForce(transform.up * 10, ForceMode.Impulse);
+				//transform.rigidbody.velocity=new Vector3(0,10,0);
 				jump=true;
 			}
 		}
-		if (transform.rigidbody.velocity.sqrMagnitude > maxSpeed) {
-//			transform.rigidbody.velocity = transform.forward*maxSpeed;
+/*なぜかジャンプできなくなる
+		float tmpY = rigidbody.velocity.y;
+		rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+		if (rigidbody.velocity.magnitude > maxSpeed) {
+			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 		}
-/*		if ((transform.rigidbody.velocity*(new Vector3(1,0,1))).sqrMagnitude > maxSpeed) {
-			float ySpeed = transform.rigidbody.velocity.y;
-			transform.rigidbody.velocity = transform.forward*(new Vector3(1,0,1)).normalized*maxSpeed;
-			transform.rigidbody.velocity.y = ySpeed;
-		}		*/
-
+		rigidbody.velocity = new Vector3(rigidbody.velocity.x, tmpY, rigidbody.velocity.z);
+*/
 	}
 
 	void OnCollisionEnter(Collision _collision){
 
-		if (_collision.gameObject.name == "Ground") {
+		if (jump && (_collision.gameObject.name=="GroundCube(Clone)" || _collision.gameObject.name=="GroundCube2(Clone)")){
 			jump=false;
+			Debug.Log("chakuchi");
 			//Application.Quit();
 		}
 

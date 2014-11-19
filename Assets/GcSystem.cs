@@ -21,7 +21,8 @@ public class GcSystem : MonoBehaviour{
 			timecount = 0;
 			falling = true;
 			rigidbody.isKinematic = false;
-			Debug.Log("fallStart:"+deadTime);
+			rigidbody.AddForce(new Vector3(0,0.1f,0));
+			//Debug.Log("fallStart:"+deadTime);
 		}
 
 		if (falling && timecount>10) {
