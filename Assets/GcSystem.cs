@@ -1,24 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GcSystem : MonoBehaviour, GameObject {
+public class GcSystem : MonoBehaviour{
 
-	int i=0;
-	int j=0;
+	float deadTime = -1;
+	bool falling = false;
+	float timecount=0;
+
 
 	// Use this for initialization
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
+
+	// Update is called once per frame	//fixUpdate...最強
 	void Update () {
-	
+		timecount+=Time.deltaTime;
+		if (!falling && timecount >= deadTime && deadTime!=-1) {
+			timecount = 0;
+			falling = true;
+			rigidbody.isKinematic = false;
+			Debug.Log("fallStart:"+deadTime);
+		}
+
+		if (falling && timecount>10) {
+			//Destroy(this.gameObject);
+		}
 	}
 
-	public void SetIndex(int _i, int _j){
-		i = _i;
-		j = _j;
-		Debug.Log ("GcSytem"+i+":"+j);
+	public void SetDeadTime(float _time){
+		deadTime = _time;
 	}
 }

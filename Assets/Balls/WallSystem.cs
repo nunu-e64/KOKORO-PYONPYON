@@ -7,10 +7,8 @@ public class WallSystem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		timecount = 0;
 	}
 	
-	float timecount;
 
 	// Update is called once per frame
 	void Update () {

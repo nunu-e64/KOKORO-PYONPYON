@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI ;
 
 public class MeSystem : MonoBehaviour {
 
@@ -8,14 +9,25 @@ public class MeSystem : MonoBehaviour {
 	private bool jump=false;
 	public float accell = 0.1f;
 	public float maxSpeed = 10;
+	Text goText;
+
+	void Awake(){
+		goText = GameObject.Find ("1/Text").GetComponent <Text> ();
+		goText.gameObject.SetActive (false);
+		goText.text ="73";
+	}
+
 
 	// Use this for initialization
 	void Start () {
+		goText.text ="72";
 	}
 
 
 	// Update is called once per frame
 	void Update () {
+		goText.gameObject.SetActive (true);
+
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			this.transform.Translate(new Vector3(0,0,0.1f));
 		}
