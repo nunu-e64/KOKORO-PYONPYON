@@ -7,12 +7,12 @@ public class MeSystem : MonoBehaviour {
 	public GameObject ball; 
 
 	private bool jump=false;
-	private float maxSpeed = 5;
+	private float maxSpeed = 7;
 
 	private float moveForce = 100;
 	private float moveForce_air = 20;
 
-	private float jumpForce = 50;
+	private float jumpForce = 60;
 	private float extraG = 6;
 
 	public KeyCode keyUp = KeyCode.UpArrow;
@@ -20,6 +20,7 @@ public class MeSystem : MonoBehaviour {
 	public KeyCode keyRight = KeyCode.RightArrow;
 	public KeyCode keyLeft = KeyCode.LeftArrow;
 	public KeyCode keyJump = KeyCode.Space;
+	public KeyCode keyJump2 = KeyCode.RightShift;
 
 
 	//Text goText;
@@ -61,7 +62,17 @@ public class MeSystem : MonoBehaviour {
 			rigidbody.velocity = new Vector3(tmpVec.x, rigidbody.velocity.y, tmpVec.z);
 		}
 
-		if (Input.GetKey (keyJump)) {
+		/*if (jump && false) {  //意図したように動かないので一旦ボツ
+			Vector2 tmpDir2 = new Vector2 ((int)(Mathf.Abs (rigidbody.velocity.x) / rigidbody.velocity.x), (int)(Mathf.Abs (rigidbody.velocity.z) / rigidbody.velocity.z));
+			Vector2 tmpVec2 = new Vector2 (Mathf.Abs (rigidbody.velocity.x) - 0.5f, Mathf.Abs (rigidbody.velocity.z) - 0.5f);
+			
+			if (tmpDir2 == new Vector2 ((int)(Mathf.Abs (tmpVec2.x) / tmpVec2.x), (int)(Mathf.Abs (tmpVec2.y) / tmpVec2.y))) {
+				rigidbody.velocity = new Vector3 (tmpVec2.x, rigidbody.velocity.y, tmpVec2.y);
+			}
+		}*/
+
+
+		if (Input.GetKey (keyJump) || Input.GetKey (keyJump2) ) {
 			if (!jump) {
 				rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 				jump=true;

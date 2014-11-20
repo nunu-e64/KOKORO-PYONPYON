@@ -41,7 +41,7 @@ public class TitleSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Return)){
+		if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Space)){
 			Application.LoadLevel("scene0");
 		}
 	
