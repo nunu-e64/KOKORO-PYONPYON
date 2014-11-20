@@ -14,13 +14,12 @@ public class TitleSystem : MonoBehaviour {
 	float timecount = 0;
 	int counter = 0;
 
-	Rect titleRect = new Rect (Screen.width/2-50, 0, 100, 100);
 	public GUIStyle titleStyle; 	public GUIStyle messageStyle;
 
 	void OnGUI(){
 		GUI.Label(new Rect (Screen.width/2-50, 0, 100, 100),"Se~no! de Poppin Jump!!", titleStyle);		//"せーのでぽっぴんジャンプ♪"
 
-		if((int)(timecount/0.5f)%3!=0) GUI.Label(new Rect (Screen.width/2-50, Screen.height/2, 100, 100),"Press SPACE KEY to start", messageStyle);
+		if((int)(timecount/0.5f)%3!=0) GUI.Label(new Rect (Screen.width/2-50, Screen.height/2, 100, 100),"Press ENTER KEY to start", messageStyle);
 	}
 
 
@@ -41,7 +40,7 @@ public class TitleSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Space)){
+		if (Input.GetKey(KeyCode.Return)){
 			Application.LoadLevel("scene0");
 		}
 	

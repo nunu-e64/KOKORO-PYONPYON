@@ -6,13 +6,13 @@ public class MeSystem : MonoBehaviour {
 
 	public GameObject ball; 
 
-	private bool jump=false;
+	protected bool jump=false;
 	private float maxSpeed = 7;
 
 	private float moveForce = 100;
 	private float moveForce_air = 20;
 
-	private float jumpForce = 60;
+	protected float jumpForce = 60;
 	private float extraG = 6;
 
 	public KeyCode keyUp = KeyCode.UpArrow;
@@ -37,6 +37,10 @@ public class MeSystem : MonoBehaviour {
 	}
 	protected void Begin(){
 		Start ();
+	}
+
+	protected void ForUpdate(){
+		Update ();
 	}
 
 	// Update is called once per frame
@@ -86,7 +90,7 @@ public class MeSystem : MonoBehaviour {
 
 	void OnCollisionEnter(Collision _collision){
 
-		if (jump && (_collision.gameObject.name=="GroundCube(Clone)" || _collision.gameObject.name=="GroundCube2(Clone)")){
+		if (jump && (_collision.gameObject.tag == "Wall" || _collision.gameObject.name=="GroundCube(Clone)" || _collision.gameObject.name=="GroundCube2(Clone)")){
 			jump=false;
 			Debug.Log("chakuchi");
 			//Application.Quit();
