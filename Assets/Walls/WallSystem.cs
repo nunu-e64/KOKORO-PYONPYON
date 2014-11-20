@@ -14,7 +14,7 @@ public class WallSystem : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.sqrMagnitude>1600) {
+		if (transform.position.magnitude>100) {
 			Destroy(this.gameObject);
 		}
 		this.transform.Translate (new Vector3 (0, 0, speed));

@@ -46,14 +46,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Balls\WallSystem.cs" />
      <Compile Include="Assets\EnemySystem.cs" />
      <Compile Include="Assets\GcSystem.cs" />
      <Compile Include="Assets\MeSystem.cs" />
      <Compile Include="Assets\SecondPlayerSystem.cs" />
      <Compile Include="Assets\StageSystem.cs" />
+     <Compile Include="Assets\Title\TitleMeSystem.cs" />
+     <Compile Include="Assets\Title\TitleSystem.cs" />
+     <Compile Include="Assets\Walls\WallSystem.cs" />
+     <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>C:/Users/NUNU/Dropbox/MyDocuments/Works/Unity/se-no/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>

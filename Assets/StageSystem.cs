@@ -3,6 +3,7 @@ using System.Collections;
 
 public class StageSystem : MonoBehaviour {
 	public int stageLength = 11;
+	int gcSize = 2;
 	int stageSize;
 
 	//GroundCubesCreate
@@ -15,8 +16,6 @@ public class StageSystem : MonoBehaviour {
 
 		int wall_num=0;
 		float timecount = 0;
-		int counter = 0;
-		GameObject new_wall;
 		
 
 	int[,] deadTime = {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
@@ -33,7 +32,8 @@ public class StageSystem : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		stageSize = stageLength * 2;
+		Destroy (GameObject.Find ("Cube"));
+		stageSize = stageLength * gcSize;
 
 		GcSystem new_gc;
 		GameObject go;
@@ -46,55 +46,60 @@ public class StageSystem : MonoBehaviour {
 			}
 		}
 	}
-		
+
+	int counter = 0;
+	
+
+	Rect debugRect = new Rect(0,0,100,100);
+	void OnGUI() {
+		GUI.Label (debugRect, "Hello World!");
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 		timecount += Time.deltaTime;//seconds
 		if (timecount >= pushStep*(counter+1)){
-			int rndPos = (int)(Random.Value*stageSize - stageSize/2.0f);
 
-			switch(counter) {
-			case (0):
-				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (rndPos, wall[wall_num].transform.localScale.y/2+0.5f, -30), new Quaternion()));
-				new_wall.transform.Rotate(0,0,0);
-				break;
-			case (1):
-				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (-30, wall[wall_num].transform.localScale.y/2+0.5f,rndPos), new Quaternion()));
-				new_wall.transform.Rotate(0,90,0);
-				break;
-			case (2):
-				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (rndPos, wall[wall_num].transform.localScale.y/2+0.5f, 30), new Quaternion()));
-				new_wall.transform.Rotate(0,90*2,0);
-				break;
-			case (3):
+			wall_num = Random.Range(0,wall.GetLength(0));
+			CreateWall(counter);
+			if (counter==3){
 				timecount=0;
 				counter=0;
-				wall_num = (wall_num+1)%wall.GetLength(0);
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (30, wall[wall_num].transform.localScale.y/2+0.5f, rndPos), new Quaternion()));					
-				new_wall.transform.Rotate(0,90*3,0);
-				break;
+				//wall_num = (wall_num+1)%wall.GetLength(0);
+			}else{
+				++counter;
 			}
 		}
 
 	}
 
-	void CreateWall(int _index, int _rndPos){
-		_index = _index % 4;
+	void CreateWall(int _dir){
+		GameObject new_wall;
+		int startDistance = 50;
 
-		switch (_index) {
+		_dir = _dir % 4;
+		new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (), new Quaternion()));
+		int rndPos = (int)(Random.Range(-new_wall.transform.localScale.x/gcSize, stageLength) + (new_wall.transform.localScale.x/gcSize)/2.0f - stageLength/2.0f)*gcSize;
+		new_wall.transform.Rotate(0,90*_dir,0);
+	
+		switch (_dir) {
 		case (0):
-
+			new_wall.transform.position = new Vector3(rndPos, wall[wall_num].transform.localScale.y/2+0.5f, -startDistance); 
 			break;
 		case (1):
+			new_wall.transform.position = new Vector3(-startDistance, wall[wall_num].transform.localScale.y/2+0.5f, rndPos); 
 			break;
 		case (2):
+			new_wall.transform.position = new Vector3(rndPos, wall[wall_num].transform.localScale.y/2+0.5f, startDistance); 
 			break;
 		case (3):
+			new_wall.transform.position = new Vector3(startDistance, wall[wall_num].transform.localScale.y/2+0.5f, rndPos); 
 			break;
 		}
 	}
 
+	public void GameOver(){
+		//Application.LoadLevel("scene2");
+	}
 }

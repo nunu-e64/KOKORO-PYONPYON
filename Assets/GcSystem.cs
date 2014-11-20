@@ -22,11 +22,10 @@ public class GcSystem : MonoBehaviour{
 			falling = true;
 			rigidbody.isKinematic = false;
 			rigidbody.AddForce(new Vector3(0,0.1f,0));
-			//Debug.Log("fallStart:"+deadTime);
 		}
 
-		if (falling && timecount>10) {
-			//Destroy(this.gameObject);
+		if (falling && timecount>5) {
+			Destroy(this.gameObject);
 		}
 	}
 
