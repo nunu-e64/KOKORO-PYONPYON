@@ -9,6 +9,8 @@ public class SecondPlayerSystem : MeSystem {
 		keyLeft = KeyCode.A;
 		keyRight = KeyCode.D;
 		keyJump = KeyCode.LeftShift;
+
+		Begin ();
 	}
 
 }

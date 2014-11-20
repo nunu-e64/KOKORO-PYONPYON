@@ -28,8 +28,11 @@ public class MeSystem : MonoBehaviour {
 	}*/
 
 	// Use this for initialization
-	protected void Start () {
+	void Start () {
 
+	}
+	protected void Begin(){
+		Start ();
 	}
 
 	// Update is called once per frame

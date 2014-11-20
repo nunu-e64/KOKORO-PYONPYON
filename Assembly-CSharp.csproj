@@ -49,9 +49,9 @@
      <Compile Include="Assets\Balls\WallSystem.cs" />
      <Compile Include="Assets\EnemySystem.cs" />
      <Compile Include="Assets\GcSystem.cs" />
-     <Compile Include="Assets\GroundSystem.cs" />
      <Compile Include="Assets\MeSystem.cs" />
      <Compile Include="Assets\SecondPlayerSystem.cs" />
+     <Compile Include="Assets\StageSystem.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
  <Reference Include="UnityEngine.UI">

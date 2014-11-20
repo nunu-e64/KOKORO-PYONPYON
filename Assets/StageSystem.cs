@@ -1,17 +1,23 @@
 using UnityEngine;
 using System.Collections;
 
-public class GroundSystem : MonoBehaviour {
-	public GameObject[] wall = new GameObject[10];
-	public GameObject[] groundCube = new GameObject[2];
-	public float pushStep = 2.5f;	//seconds
-	public float fallStep = 3.0f;	//seconds
+public class StageSystem : MonoBehaviour {
+	public int stageLength = 11;
+	int stageSize;
 
-	int wall_num=0;
-	float timecount = 0;
-	int counter = 0;
+	//GroundCubesCreate
+		public GameObject[] groundCube = new GameObject[2];
+		public float fallStep = 3.0f;	//seconds
 
-	GameObject new_wall;
+	//WallCreate
+		public GameObject[] wall = new GameObject[2];
+		public float pushStep = 2.5f;	//seconds
+
+		int wall_num=0;
+		float timecount = 0;
+		int counter = 0;
+		GameObject new_wall;
+		
 
 	int[,] deadTime = {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
 		{40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 12},
@@ -27,11 +33,13 @@ public class GroundSystem : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		stageSize = stageLength * 2;
+
 		GcSystem new_gc;
 		GameObject go;
 
-		for (int i=0; i<11; i++) {
-			for (int j=0; j<11; j++) {
+		for (int i=0; i<stageLength; i++) {
+			for (int j=0; j<stageLength; j++) {
 				go = (GameObject)(Instantiate(groundCube[(i+j)%2],  new Vector3((i-5)*2,0,(j-5)*2), new Quaternion()));
 				new_gc = go.GetComponents<GcSystem>()[0];
 				new_gc.SetDeadTime(deadTime[i,j]*fallStep);
@@ -43,34 +51,50 @@ public class GroundSystem : MonoBehaviour {
 	void Update () {
 		timecount += Time.deltaTime;//seconds
 		if (timecount >= pushStep*(counter+1)){
+			int rndPos = (int)(Random.Value*stageSize - stageSize/2.0f);
+
 			switch(counter) {
 			case (0):
 				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (0, wall[wall_num].transform.localScale.y/2+0.5f, -30), new Quaternion()));
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (rndPos, wall[wall_num].transform.localScale.y/2+0.5f, -30), new Quaternion()));
 				new_wall.transform.Rotate(0,0,0);
-				//new_wall.transform.position.y = new_wall.transform.localScale.y/2 + 0.5f; 
 				break;
 			case (1):
 				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (-30, wall[wall_num].transform.localScale.y/2+0.5f,0), new Quaternion()));
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (-30, wall[wall_num].transform.localScale.y/2+0.5f,rndPos), new Quaternion()));
 				new_wall.transform.Rotate(0,90,0);
-				//go1.transform.position.y = go1.transform.localScale.y;
 				break;
 			case (2):
 				++counter;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (0, wall[wall_num].transform.localScale.y/2+0.5f, 30), new Quaternion()));
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (rndPos, wall[wall_num].transform.localScale.y/2+0.5f, 30), new Quaternion()));
 				new_wall.transform.Rotate(0,90*2,0);
-				//go2.transform.position.y = go2.transform.localScale.y;
 				break;
 			case (3):
 				timecount=0;
 				counter=0;
-				wall_num = (wall_num+1)%2;
-				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (30, wall[wall_num].transform.localScale.y/2+0.5f, 0), new Quaternion()));					
+				wall_num = (wall_num+1)%wall.GetLength(0);
+				new_wall = (GameObject)(Instantiate (wall[wall_num], new Vector3 (30, wall[wall_num].transform.localScale.y/2+0.5f, rndPos), new Quaternion()));					
 				new_wall.transform.Rotate(0,90*3,0);
-				//go3.transform.position.y = go3.transform.localScale.y;
 				break;
 			}
 		}
+
 	}
+
+	void CreateWall(int _index, int _rndPos){
+		_index = _index % 4;
+
+		switch (_index) {
+		case (0):
+
+			break;
+		case (1):
+			break;
+		case (2):
+			break;
+		case (3):
+			break;
+		}
+	}
+
 }
