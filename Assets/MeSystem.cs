@@ -20,8 +20,9 @@ public class MeSystem : MonoBehaviour {
 	public KeyCode keyRight = KeyCode.RightArrow;
 	public KeyCode keyLeft = KeyCode.LeftArrow;
 	public KeyCode keyJump = KeyCode.Space;
-	public KeyCode keyJump2 = KeyCode.RightShift;
+	public KeyCode keyJump2 = KeyCode.RightControl;
 
+	public bool reborn = false;
 
 	//Text goText;
 
@@ -86,6 +87,12 @@ public class MeSystem : MonoBehaviour {
 		if (jump){
 			rigidbody.AddForce(transform.up*-extraG, ForceMode.Acceleration);
 		}
+
+		if (reborn && transform.position.y < -40) {
+			transform.position = new Vector3 (0, 30, 0);
+			rigidbody.velocity = new Vector3(0,rigidbody.velocity.y,0);
+		}
+
 	}
 
 	void OnCollisionEnter(Collision _collision){

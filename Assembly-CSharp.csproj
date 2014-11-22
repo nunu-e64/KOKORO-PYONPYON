@@ -46,10 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ChangeCameraSys.cs" />
+     <Compile Include="Assets\ChangePlayerSys.cs" />
      <Compile Include="Assets\EnemySystem.cs" />
      <Compile Include="Assets\GcSystem.cs" />
      <Compile Include="Assets\MeSystem.cs" />
-     <Compile Include="Assets\SecondPlayerSystem.cs" />
+     <Compile Include="Assets\PyonpyonSystem.cs" />
      <Compile Include="Assets\StageSystem.cs" />
      <Compile Include="Assets\Title\TitleMeSystem.cs" />
      <Compile Include="Assets\Title\TitleSystem.cs" />
@@ -59,6 +61,7 @@
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
+     <None Include="Assets\Blender\text.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

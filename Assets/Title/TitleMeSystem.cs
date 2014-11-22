@@ -5,9 +5,6 @@ public class TitleMeSystem : MeSystem {
 
 	// Use this for initialization
 	void Start () {
-		GUIText text = GameObject.Find ("MyText").GetComponent<GUIText>();
-		text.transform.position = new Vector3 (0, 0, 0);
-		text.text = "↑Forward";
 	}
 
 
