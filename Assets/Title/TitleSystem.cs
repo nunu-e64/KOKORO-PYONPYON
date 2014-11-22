@@ -20,9 +20,9 @@ public class TitleSystem : MonoBehaviour {
 	public bool CameraChangeButton=true;
 
 	void OnGUI(){
-		GUI.Label(new Rect (Screen.width/2-50, 0, 100, 100),"Se~no! de Poppin Jump!!", titleStyle);		//"せーのでぽっぴんジャンプ♪"
+		GUI.Label(new Rect (Screen.width/2-50, 0, 100, 100),"心がぴょんぴょんするゲーム", titleStyle);		//"心がぴょんぴょんするゲーム""せーのでぽっぴんジャンプ♪"
 
-		if((int)(timecount/0.5f)%3!=0) GUI.Label(new Rect (Screen.width/2-50, Screen.height/2, 100, 100),"Press ENTER KEY to start", messageStyle);
+		if((int)(timecount/0.5f)%3!=0) GUI.Label(new Rect (Screen.width/2-50, Screen.height/2, 100, 100),"エンターキーではじまるよ", messageStyle);
 	}
 
 
