@@ -45,7 +45,5 @@ public class ChangePlayerSys : MonoBehaviour {
 		playerObject01[playerKind].transform.position =  new Vector3(-2,4,2);
 		playerObject02[playerKind].transform.position =  new Vector3(2,4,-2);
 
-
-		Debug.Log (playerKind + ":" + playerKindNum);
 	}
 }

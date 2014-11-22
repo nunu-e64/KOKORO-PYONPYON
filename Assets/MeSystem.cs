@@ -78,7 +78,7 @@ public class MeSystem : MonoBehaviour {
 
 
 		if (Input.GetKey (keyJump) || Input.GetKey (keyJump2) ) {
-			if (!jump) {
+			if (!jump  && rigidbody.velocity.y<=0) {
 				rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 				jump=true;
 			}
@@ -99,7 +99,6 @@ public class MeSystem : MonoBehaviour {
 
 		if (jump && (_collision.gameObject.tag == "Wall" || _collision.gameObject.name=="GroundCube(Clone)" || _collision.gameObject.name=="GroundCube2(Clone)")){
 			jump=false;
-			Debug.Log("chakuchi");
 			//Application.Quit();
 		}
 

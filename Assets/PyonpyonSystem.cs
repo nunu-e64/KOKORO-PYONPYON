@@ -3,13 +3,18 @@ using System.Collections;
 
 public class PyonpyonSystem : MeSystem {
 
-	void Updata(){
+	void Start(){
+
+	}
+
+	void Update () {
 		ForUpdate ();
 
-		if (!jump) {
+		if (!jump && rigidbody.velocity.y<=0) {
 			rigidbody.AddForce (transform.up * jumpForce, ForceMode.Impulse);
 			jump = true;
 		}
+
 	}
 
 }

@@ -16,6 +16,9 @@ public class TitleSystem : MonoBehaviour {
 
 	public GUIStyle titleStyle; 	public GUIStyle messageStyle;
 
+	public bool PlayerChangeButton=true;
+	public bool CameraChangeButton=true;
+
 	void OnGUI(){
 		GUI.Label(new Rect (Screen.width/2-50, 0, 100, 100),"Se~no! de Poppin Jump!!", titleStyle);		//"せーのでぽっぴんジャンプ♪"
 
@@ -36,13 +39,23 @@ public class TitleSystem : MonoBehaviour {
 		}
 
 		Destroy (GameObject.Find ("Cube"));
+
+		if (!PlayerChangeButton) GameObject.Find ("PlayerButton").transform.position=new Vector3(0,-100,0);
+		if (!CameraChangeButton) GameObject.Find ("CameraButton").transform.position=new Vector3(100,-100,100);
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
+
 		if (Input.GetKey(KeyCode.Return)){
 			Application.LoadLevel("scene0");
 		}
+
+		if (Input.GetKeyDown(KeyCode.K)){
+			GameObject.Find("PlayerButton").GetComponent<ChangePlayerSys>().ChangePlayer();
+		}
+
 	
 		timecount += Time.deltaTime;//seconds
 		if (timecount >= pushStep*(counter+1)){

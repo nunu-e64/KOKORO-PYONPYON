@@ -5,6 +5,8 @@ public class StageSystem : MonoBehaviour {
 	public int stageLength = 11;
 	int gcSize = 2;
 	int stageSize;
+	public bool PlayerChangeButton=true;
+	public bool CameraChangeButton=true;
 
 	//GroundCubesCreate
 		public GameObject[] groundCube = new GameObject[2];
@@ -45,6 +47,10 @@ public class StageSystem : MonoBehaviour {
 				new_gc.SetDeadTime(deadTime[i,j]*fallStep);
 			}
 		}
+
+		if (!PlayerChangeButton) GameObject.Find ("PlayerButton").transform.position=new Vector3(0,-100,0);
+		if (!CameraChangeButton) GameObject.Find ("CameraButton").transform.position=new Vector3(100,-100,100);
+
 	}
 
 	int counter = 0;
@@ -58,6 +64,11 @@ public class StageSystem : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.K)){
+			GameObject.Find("PlayerButton").GetComponent<ChangePlayerSys>().ChangePlayer();
+		}
+
+
 		timecount += Time.deltaTime;//seconds
 		if (timecount >= pushStep*(counter+1)){
 
