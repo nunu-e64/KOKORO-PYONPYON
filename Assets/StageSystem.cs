@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class StageSystem : MonoBehaviour {
@@ -7,6 +7,8 @@ public class StageSystem : MonoBehaviour {
 	int stageSize;
 	public bool PlayerChangeButton=true;
 	public bool CameraChangeButton=true;
+
+	float score = 0;
 
 	//GroundCubesCreate
 		public GameObject[] groundCube = new GameObject[2];
@@ -18,7 +20,8 @@ public class StageSystem : MonoBehaviour {
 
 		int wall_num=0;
 		float timecount = 0;
-		
+		int counter = 0;
+
 
 	int[,] deadTime = {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
 		{40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 12},
@@ -51,24 +54,40 @@ public class StageSystem : MonoBehaviour {
 		if (!PlayerChangeButton) GameObject.Find ("PlayerButton").transform.position=new Vector3(0,-100,0);
 		if (!CameraChangeButton) GameObject.Find ("CameraButton").transform.position=new Vector3(100,-100,100);
 
+		scoreStyle.alignment = TextAnchor.UpperCenter;
+		scoreStyle.normal.textColor = Color.black;
+		scoreStyle.fontSize = 16;
 	}
 
-	int counter = 0;
-	
+	GUIStyle scoreStyle = new GUIStyle();
+	public GUIStyle gameoverStyle;
+	string resultScore = "";
 
-	Rect debugRect = new Rect(0,0,100,100);
 	void OnGUI() {
-		GUI.Label (debugRect, "Hello World!");
+		string scoreText = (((int)(score * 10)) / 10.0).ToString ();
+		if ((int)(score * 10) % 10 == 0)scoreText += ".0";
 
+		if (!gameOver) {
+			GUI.Label (new Rect (0, 15, Screen.width, 100), scoreText, scoreStyle);
+		} else {
+			if (resultScore.Length==0) resultScore = scoreText;
+			scoreStyle.fontSize = 32;
+			scoreStyle.alignment=TextAnchor.MiddleCenter;
+			GUI.Label (new Rect (0, 0, Screen.width, Screen.height-120), "スコア："+resultScore, scoreStyle);
+			GUI.Label (new Rect (0, 0, Screen.width, Screen.height), winnerName + "の勝ち！\nエンターキーでタイトルへ", gameoverStyle);
+		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (gameOver && Input.GetKeyDown (KeyCode.Return)) {
+			Application.LoadLevel ("scene_title");
+		}
 		if (Input.GetKeyDown(KeyCode.K)){
 			GameObject.Find("PlayerButton").GetComponent<ChangePlayerSys>().ChangePlayer();
 		}
 
-
+		score += Time.deltaTime;
 		timecount += Time.deltaTime;//seconds
 		if (timecount >= pushStep*(counter+1)){
 
@@ -110,7 +129,12 @@ public class StageSystem : MonoBehaviour {
 		}
 	}
 
-	public void GameOver(){
-		//Application.LoadLevel("scene2");
+	bool gameOver = false;
+	string winnerName = "";
+	public void GameOver(string _losername){
+		if (!gameOver) {
+				gameOver = true;
+				winnerName = (_losername=="1P"? "2P":"1P");
+		}
 	}
 }

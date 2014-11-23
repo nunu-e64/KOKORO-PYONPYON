@@ -14,15 +14,30 @@ public class TitleSystem : MonoBehaviour {
 	float timecount = 0;
 	int counter = 0;
 
-	public GUIStyle titleStyle; 	public GUIStyle messageStyle;
+	public GUIStyle titleStyle; 	public GUIStyle messageStyle; 	public GUIStyle selectStyle; 	public GUIStyle startStyle;
 
 	public bool PlayerChangeButton=true;
 	public bool CameraChangeButton=true;
 
-	void OnGUI(){
-		GUI.Label(new Rect (Screen.width/2-50, 0, 100, 100),"心がぴょんぴょんするゲーム", titleStyle);		//"心がぴょんぴょんするゲーム""せーのでぽっぴんジャンプ♪"
+	public static int selectMode = 0;
 
-		if((int)(timecount/0.5f)%3!=0) GUI.Label(new Rect (Screen.width/2-50, Screen.height/2, 100, 100),"エンターキーではじまるよ", messageStyle);
+	void OnGUI(){
+		GUI.Label(new Rect (Screen.width/2-50, 10, 100, 100),"心がぴょんぴょんするゲーム", titleStyle);		//"心がぴょんぴょんするゲーム""せーのでぽっぴんジャンプ♪"
+
+		string message = "ステージからおちないように、かべをよけつづけよう！\n1P(あか)･･･いどう：↑↓←→　ジャンプ：スペースか右Ctrl\n2P(あお)･･･いどう：ＷＳＡＤ　ジャンプ：左シフトか左Ctrl";
+		GUI.Label(new Rect (15, Screen.height-130, 100, 100),message, messageStyle);
+
+		string selectMessage;
+		selectMessage = ((selectMode==0)?"ふつう→":"←むずかしい");
+        selectStyle.alignment = TextAnchor.UpperCenter;
+		GUI.Label(new Rect (Screen.width/2-50, 60, 100, 100),selectMessage, selectStyle);
+
+		if((int)(timecount/0.5f)%3!=0) GUI.Label(new Rect (Screen.width/2-50, 90, 100, 100),"エンターキーではじまるよ", startStyle);
+
+		
+		if (Input.GetKey(KeyCode.LeftArrow)) selectMode = 0;
+		if (Input.GetKey(KeyCode.RightArrow)) selectMode = 1;
+
 	}
 
 
@@ -48,7 +63,7 @@ public class TitleSystem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey(KeyCode.Return)){
+		if (Input.GetKeyDown(KeyCode.Return)){
 			Application.LoadLevel("scene0");
 		}
 

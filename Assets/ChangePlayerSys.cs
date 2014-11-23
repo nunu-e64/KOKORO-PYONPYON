@@ -7,7 +7,9 @@ public class ChangePlayerSys : MonoBehaviour {
 	int playerKindNum = 0;
 	public GameObject[] playerObject01 = new GameObject[2]; //[playerIndex, kind]
 	public GameObject[] playerObject02 = new GameObject[2]; //[playerIndex, kind]
-	
+
+	public bool title = false;
+
 	// Use this for initialization
 	void Start () {
 		playerKindNum = Mathf.Min(playerObject01.GetLength (0),playerObject02.GetLength (0));
@@ -17,8 +19,8 @@ public class ChangePlayerSys : MonoBehaviour {
 				if(i==playerKind){
 					playerObject01 [i].SetActive (true);
 					playerObject02 [i].SetActive (true);
-					playerObject01[i].transform.position =  new Vector3(-2,4,2);
-					playerObject02[i].transform.position =  new Vector3(2,4,-2);
+					playerObject01[i].transform.position =  new Vector3(-2,4,(title?-4:2));
+					playerObject02[i].transform.position =  new Vector3(2,4,(title?-8:-2));
 
 				}else{
 					playerObject01 [i].SetActive (false);

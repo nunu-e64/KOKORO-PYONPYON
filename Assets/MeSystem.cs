@@ -4,7 +4,7 @@ using UnityEngine.UI ;
 
 public class MeSystem : MonoBehaviour {
 
-	public GameObject ball; 
+	//public GameObject ball; 
 
 	protected bool jump=false;
 	private float maxSpeed = 7;
@@ -23,6 +23,7 @@ public class MeSystem : MonoBehaviour {
 	public KeyCode keyJump2 = KeyCode.RightControl;
 
 	public bool reborn = false;
+	int life;
 
 	//Text goText;
 
@@ -31,10 +32,21 @@ public class MeSystem : MonoBehaviour {
 		goText.gameObject.SetActive (false);
 		goText.text ="73";
 	}*/
+	
+	GUIStyle lifeStyle = new GUIStyle();
 
 	// Use this for initialization
 	void Start () {
-
+		life = (TitleSystem.selectMode == 0 ? 3 : 1);
+		lifeStyle.fontSize = 20;
+		if (name == "1P") {
+			lifeStyle.alignment = TextAnchor.UpperLeft;
+			lifeStyle.normal.textColor = Color.red;
+		} else if (name == "2P") {
+			lifeStyle.alignment = TextAnchor.UpperRight;
+			lifeStyle.normal.textColor = Color.blue;
+		}
+		
 	}
 	protected void Begin(){
 		Start ();
@@ -42,6 +54,11 @@ public class MeSystem : MonoBehaviour {
 
 	protected void ForUpdate(){
 		Update ();
+	}
+	
+	void OnGUI(){
+		if (!reborn) GUI.Label (new Rect (20, 10, Screen.width-40, 100), name + "のライフ：のこり " + life,lifeStyle);
+
 	}
 
 	// Update is called once per frame
@@ -67,7 +84,7 @@ public class MeSystem : MonoBehaviour {
 			rigidbody.velocity = new Vector3(tmpVec.x, rigidbody.velocity.y, tmpVec.z);
 		}
 
-		/*if (jump && false) {  //意図したように動かないので一旦ボツ
+		/*if (jump && false) {  //空中減速システム・・・意図したように動かないので一旦ボツ
 			Vector2 tmpDir2 = new Vector2 ((int)(Mathf.Abs (rigidbody.velocity.x) / rigidbody.velocity.x), (int)(Mathf.Abs (rigidbody.velocity.z) / rigidbody.velocity.z));
 			Vector2 tmpVec2 = new Vector2 (Mathf.Abs (rigidbody.velocity.x) - 0.5f, Mathf.Abs (rigidbody.velocity.z) - 0.5f);
 			
@@ -88,11 +105,18 @@ public class MeSystem : MonoBehaviour {
 			rigidbody.AddForce(transform.up*-extraG, ForceMode.Acceleration);
 		}
 
-		if (reborn && transform.position.y < -40) {
-			transform.position = new Vector3 (0, 30, 0);
-			rigidbody.velocity = new Vector3(0,rigidbody.velocity.y,0);
+		//蘇生
+		if (transform.position.y < -40) {
+			if (life>1 || reborn){
+				--life;
+				transform.position = new Vector3 (0, 30, 0);
+				rigidbody.velocity = new Vector3(0,rigidbody.velocity.y,0);
+			}else{
+				life = 0;
+				GameObject.Find("Stage").GetComponent<StageSystem>().GameOver(name);
+				rigidbody.velocity = new Vector3 (0,0,0);
+			}
 		}
-
 	}
 
 	void OnCollisionEnter(Collision _collision){

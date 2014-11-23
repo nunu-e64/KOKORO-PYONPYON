@@ -5,19 +5,15 @@ public class TitleMeSystem : MeSystem {
 
 	// Use this for initialization
 	void Start () {
+		reborn = true;
 	}
 
 
-	bool flag = false;
+	bool flag = true;
 	float timeCount = 0;
 	//float jumpForce = 70;
 	//float extraG = 6;
-
-	void OnGUI(){
-		GUI.color = Color.black;
-		GUI.Label (new Rect (0, 0, 200, 200), timeCount.ToString());
-	}
-
+	
 	// Update is called once per frame
 	void Update () {
 		ForUpdate ();
@@ -27,19 +23,14 @@ public class TitleMeSystem : MeSystem {
 			flag = false;
 			timeCount = 0;
 		}
-		if (!flag && timeCount > 8.0f) {
-			timeCount = timeCount - 8.0f;
+
+		if (!flag && timeCount > 4.0f) {
 			flag = true;
 		}
-		if (flag && timeCount > 4.0f && !jump) {
-			timeCount = timeCount - 4.0f;
+
+		if (flag && !jump && rigidbody.velocity.y<=0) {
 			rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 			jump = true;
-		}
-
-		if (transform.position.y < -40) {
-			transform.position = new Vector3 (0, 30, 0);
-			rigidbody.velocity = new Vector3(0,rigidbody.velocity.y,0);
 		}
 
 	}

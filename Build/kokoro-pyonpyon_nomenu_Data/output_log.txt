@@ -1,0 +1,26 @@
+Initialize engine version: 4.6.0f2 (b073107612b7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 6470M (ID=0x6760)
+    Vendor:   ATI
+    VRAM:     501 MB
+FMOD failed to initialize ... A call to a standard soundcard driver failed, which could possibly mean a bug in the driver or resources were missing or exhausted. 
+ 
+(Filename:  Line: 239)
+
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.173 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\kokoro-pyonpyon_nomenu_Data\Managed\System.dll (this message is harmless)
