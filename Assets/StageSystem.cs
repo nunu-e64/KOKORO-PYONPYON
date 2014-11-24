@@ -51,8 +51,8 @@ public class StageSystem : MonoBehaviour {
 			}
 		}
 
-		if (!PlayerChangeButton) GameObject.Find ("PlayerButton").transform.position=new Vector3(0,-100,0);
-		if (!CameraChangeButton) GameObject.Find ("CameraButton").transform.position=new Vector3(100,-100,100);
+		//if (!PlayerChangeButton) GameObject.Find ("PlayerButton").transform.position=new Vector3(0,-100,0);
+		//if (!CameraChangeButton) GameObject.Find ("CameraButton").transform.position=new Vector3(100,-100,100);
 
 		scoreStyle.alignment = TextAnchor.UpperCenter;
 		scoreStyle.normal.textColor = Color.black;
@@ -80,11 +80,9 @@ public class StageSystem : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (gameOver && Input.GetKeyDown (KeyCode.Return)) {
+		if (Input.GetKeyDown(KeyCode.Escape) || (gameOver && Input.GetKeyDown (KeyCode.Return))) {
+			GameObject.Find("ChangeMan").GetComponent<ChangeSystem>().title = true;
 			Application.LoadLevel ("scene_title");
-		}
-		if (Input.GetKeyDown(KeyCode.K)){
-			GameObject.Find("PlayerButton").GetComponent<ChangePlayerSys>().ChangePlayer();
 		}
 
 		score += Time.deltaTime;
@@ -134,7 +132,7 @@ public class StageSystem : MonoBehaviour {
 	public void GameOver(string _losername){
 		if (!gameOver) {
 				gameOver = true;
-				winnerName = (_losername=="1P"? "2P":"1P");
+				winnerName = (_losername=="あか"? "あお":"あか");
 		}
 	}
 }

@@ -6,6 +6,7 @@ public class MeSystem : MonoBehaviour {
 
 	//public GameObject ball; 
 
+	public string showName = "あああ";
 	protected bool jump=false;
 	private float maxSpeed = 7;
 
@@ -39,11 +40,11 @@ public class MeSystem : MonoBehaviour {
 	void Start () {
 		life = (TitleSystem.selectMode == 0 ? 3 : 1);
 		lifeStyle.fontSize = 20;
-		if (name == "1P") {
-			lifeStyle.alignment = TextAnchor.UpperLeft;
-			lifeStyle.normal.textColor = Color.red;
-		} else if (name == "2P") {
+		if (showName == "あか") {
 			lifeStyle.alignment = TextAnchor.UpperRight;
+			lifeStyle.normal.textColor = Color.red;
+		} else if (showName == "あお") {
+			lifeStyle.alignment = TextAnchor.UpperLeft;
 			lifeStyle.normal.textColor = Color.blue;
 		}
 		
@@ -57,7 +58,7 @@ public class MeSystem : MonoBehaviour {
 	}
 	
 	void OnGUI(){
-		if (!reborn) GUI.Label (new Rect (20, 10, Screen.width-40, 100), name + "のライフ：のこり " + life,lifeStyle);
+		if (!reborn) GUI.Label (new Rect (20, 10, Screen.width-40, 100), showName + "のライフ：のこり " + life,lifeStyle);
 
 	}
 
@@ -113,7 +114,7 @@ public class MeSystem : MonoBehaviour {
 				rigidbody.velocity = new Vector3(0,rigidbody.velocity.y,0);
 			}else{
 				life = 0;
-				GameObject.Find("Stage").GetComponent<StageSystem>().GameOver(name);
+				GameObject.Find("Stage").GetComponent<StageSystem>().GameOver(showName);
 				rigidbody.velocity = new Vector3 (0,0,0);
 			}
 		}

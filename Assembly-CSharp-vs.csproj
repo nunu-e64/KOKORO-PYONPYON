@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\ChangeCameraSys.cs" />
      <Compile Include="Assets\ChangePlayerSys.cs" />
+     <Compile Include="Assets\ChangeSystem.cs" />
      <Compile Include="Assets\EnemySystem.cs" />
      <Compile Include="Assets\GcSystem.cs" />
      <Compile Include="Assets\MeSystem.cs" />

@@ -24,7 +24,7 @@ public class TitleSystem : MonoBehaviour {
 	void OnGUI(){
 		GUI.Label(new Rect (Screen.width/2-50, 10, 100, 100),"心がぴょんぴょんするゲーム", titleStyle);		//"心がぴょんぴょんするゲーム""せーのでぽっぴんジャンプ♪"
 
-		string message = "ステージからおちないように、かべをよけつづけよう！\n1P(あか)･･･いどう：↑↓←→　ジャンプ：スペースか右Ctrl\n2P(あお)･･･いどう：ＷＳＡＤ　ジャンプ：左シフトか左Ctrl";
+		string message = "ステージからおちないように、かべをよけつづけよう！\nあか･･･いどう：↑↓←→　ジャンプ：右Ctrlキー\nあお･･･いどう：ＷＳＡＤ　ジャンプ：左Ctrlキー";
 		GUI.Label(new Rect (15, Screen.height-130, 100, 100),message, messageStyle);
 
 		string selectMessage;
@@ -55,22 +55,23 @@ public class TitleSystem : MonoBehaviour {
 
 		Destroy (GameObject.Find ("Cube"));
 
-		if (!PlayerChangeButton) GameObject.Find ("PlayerButton").transform.position=new Vector3(0,-100,0);
-		if (!CameraChangeButton) GameObject.Find ("CameraButton").transform.position=new Vector3(100,-100,100);
+		//if (!PlayerChangeButton) GameObject.Find ("PlayerButton").transform.position=new Vector3(0,-100,0);
+		//if (!CameraChangeButton) GameObject.Find ("CameraButton").transform.position=new Vector3(100,-100,100);
 	}
 	
 
 	// Update is called once per frame
 	void Update () {
 
+		
+		if (Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit();
+		}
+
 		if (Input.GetKeyDown(KeyCode.Return)){
+			GameObject.Find("ChangeMan").GetComponent<ChangeSystem>().title = false;
 			Application.LoadLevel("scene0");
 		}
-
-		if (Input.GetKeyDown(KeyCode.K)){
-			GameObject.Find("PlayerButton").GetComponent<ChangePlayerSys>().ChangePlayer();
-		}
-
 	
 		timecount += Time.deltaTime;//seconds
 		if (timecount >= pushStep*(counter+1)){

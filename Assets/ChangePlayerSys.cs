@@ -19,8 +19,8 @@ public class ChangePlayerSys : MonoBehaviour {
 				if(i==playerKind){
 					playerObject01 [i].SetActive (true);
 					playerObject02 [i].SetActive (true);
-					playerObject01[i].transform.position =  new Vector3(-2,4,(title?-4:2));
-					playerObject02[i].transform.position =  new Vector3(2,4,(title?-8:-2));
+					playerObject01[i].transform.position =  new Vector3(2,4,(title?-8:-2));
+					playerObject02[i].transform.position =  new Vector3(-2,4,(title?-4:2));
 
 				}else{
 					playerObject01 [i].SetActive (false);
@@ -44,8 +44,9 @@ public class ChangePlayerSys : MonoBehaviour {
 		playerObject01[playerKind].SetActive(true);
 		playerObject02[playerKind].SetActive(true);
 
-		playerObject01[playerKind].transform.position =  new Vector3(-2,4,2);
-		playerObject02[playerKind].transform.position =  new Vector3(2,4,-2);
+		
+		playerObject01[playerKind].transform.position =  new Vector3(2,4,-2);
+		playerObject02[playerKind].transform.position =  new Vector3(-2,4,2);
 
 	}
 }
