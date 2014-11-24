@@ -95,7 +95,7 @@ public class MeSystem : MonoBehaviour {
 		}*/
 
 
-		if (Input.GetKey (keyJump) || Input.GetKey (keyJump2) ) {
+		if (Input.GetKey (keyJump) || Input.GetKey (keyJump2) || Input.touchCount>0){	//Input.GetTouch(0).phase==TouchPhase.Began) {
 			if (!jump  && rigidbody.velocity.y<=0) {
 				rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 				jump=true;

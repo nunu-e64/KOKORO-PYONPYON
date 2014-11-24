@@ -68,7 +68,7 @@ public class TitleSystem : MonoBehaviour {
 			Application.Quit();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Return)){
+		if (Input.GetKeyDown(KeyCode.Return) || Input.touchCount>0){//GetTouch(0).phase==TouchPhase.Began){
 			GameObject.Find("ChangeMan").GetComponent<ChangeSystem>().title = false;
 			Application.LoadLevel("scene0");
 		}
