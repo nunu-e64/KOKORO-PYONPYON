@@ -1,0 +1,40 @@
+Initialize engine version: 4.6.0f2 (b073107612b7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 6470M (ID=0x6760)
+    Vendor:   ATI
+    VRAM:     501 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.998 seconds
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 7.111900 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 344.
+Total: 2.420033 ms (FindLiveObjects: 0.029968 ms CreateObjectMapping: 0.013547 ms MarkObjects: 0.211008 ms  DeleteObjects: 0.104272 ms)
+
+UnloadTime: 12.373574 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 303.
+Total: 9.845162 ms (FindLiveObjects: 0.069788 ms CreateObjectMapping: 0.047620 ms MarkObjects: 0.664636 ms  DeleteObjects: 0.217987 ms)
+
+UnloadTime: 10.641989 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 350.
+Total: 6.193150 ms (FindLiveObjects: 0.050494 ms CreateObjectMapping: 0.041462 ms MarkObjects: 0.554616 ms  DeleteObjects: 0.198282 ms)
+
