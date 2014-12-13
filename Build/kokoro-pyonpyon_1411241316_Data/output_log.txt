@@ -14,7 +14,7 @@ Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kok
 Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\NUNU\Dropbox\MyDocuments\Works\Unity\se-no\Build\kokoro-pyonpyon_1411241316_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.219 seconds
+- Completed reload, in  0.543 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
